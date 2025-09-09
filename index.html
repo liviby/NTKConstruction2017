@@ -372,31 +372,35 @@
         </div>
 
         <div class="contact-form">
-          <form>
+          <form name="contact" method="POST" data-netlify="true">
+            <!-- Hidden input สำหรับ Netlify -->
+            <input type="hidden" name="form-name" value="contact" />
+        
             <div class="input-group">
               <label>ชื่อ - นามสกุล <span style="color: red">*</span></label>
-              <input type="text" placeholder="กรอกชื่อผู้ติดต่อ" />
+              <input type="text" name="full-name" placeholder="กรอกชื่อผู้ติดต่อ" required />
               <span class="error-message name-error"></span>
             </div>
         
             <div class="input-group">
               <label>อีเมล <span style="color: red">*</span></label>
-              <input type="email" placeholder="example@email.com" />
+              <input type="email" name="email" placeholder="example@email.com" required />
               <span class="error-message email-error"></span>
             </div>
         
             <div class="input-group">
               <label>โทรศัพท์ <span style="color: red">*</span></label>
-              <input type="tel" placeholder="09X-XXX-XXXX" />
+              <input type="tel" name="phone" placeholder="09X-XXX-XXXX" required />
               <span class="error-message phone-error"></span>
             </div>
         
             <label>รายละเอียดติดต่อเพิ่มเติม</label>
-            <textarea placeholder="สอบถามข้อมูล"></textarea>
+            <textarea name="message" placeholder="สอบถามข้อมูล"></textarea>
         
             <button type="submit" class="submit-btn">ส่งฟอร์ม</button>
           </form>
         </div>
+        
 
     </section>
 
