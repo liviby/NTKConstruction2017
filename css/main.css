@@ -1,0 +1,122 @@
+@import url("about.css");
+@import url("banner.css");
+@import url("contact.css");
+@import url("footer.css");
+@import url("nav.css");
+@import url("project.css");
+@import url("service.css");
+@import url("responsive.css"); /* โค้ดเดิมที่ยังคงอยู่ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY & FONTS */
+body {
+  font-family: "IBM Plex Sans Thai", sans-serif;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Nav bar ----------------------------------------------------------------*/
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === Global Button Style === */
+button,
+a.btn,
+.contact-btn,
+.btn-contact,
+.carousel-btn,
+.submit-btn,
+.form-modal__ok,
+.form-modal__close {
+  border-radius: 12px; /* ✅ same ขนาดโค้ง for all */
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover effect */
+button:hover,
+a.btn:hover,
+.contact-btn:hover,
+.btn-contact:hover,
+.carousel-btn:hover:not([disabled]),
+.submit-btn:hover,
+.form-modal__ok:hover,
+.form-modal__close:hover {
+  filter: brightness(0.7); /* ✅ simple universal hover effect */
+  /* transform: translateY(1px); */
+}
+
+/* เพิ่มโค้ดนี้เพื่อลบ Hover effect บนมือถือ */
+@media (hover: none) and (pointer: coarse) {
+  .contact-btn:hover {
+    background-color: #fea232; /* หรือสีเดิมที่ต้องการ */
+    color: #ffffff;
+    filter: none;
+  }
+  .nav-menu a:hover {
+    color: #ffffff; /* หรือสีเดิมที่ต้องการ */
+  }
+}
+
+/* Global unified horizontal padding */
+.banner,
+.navbar,
+.projects-container,
+.contact-section {
+  padding-inline: var(--pad-x);
+}
+
+/* ===== Scroll to Top Button ===== */
+#scroll-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: #fea232;
+  color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+#scroll-to-top:hover {
+  background-color: #e3810a;
+}
+
+#scroll-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; /* สำหรับเบราว์เซอร์ Firefox */
+}
+
+
+
+
+
+
+
