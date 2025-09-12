@@ -234,9 +234,10 @@ window.addEventListener("mousemove", (e) => {
 });
 
 /* ================================
-   FORM (validate + Google Sheet)
+   FORM (validate + Formspree)
 ================================ */
-const contactForm = document.querySelector(".contact-form form");
+// เปลี่ยนมาใช้ id แทน class เพื่อความเฉพาะเจาะจง
+const contactForm = document.getElementById("contactForm"); 
 const modal = document.getElementById("form-modal");
 const modalOk = modal?.querySelector(".form-modal__ok");
 const modalClose = modal?.querySelector(".form-modal__close");
@@ -262,110 +263,118 @@ function isEmail(v) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 }
 function isPhone(v) {
-  return /^[0-9+\-\s]{9,15}$/.test(v);
+  // ปรับแก้ regex เพื่อให้รองรับเบอร์ไทยมากขึ้น (0xx-xxxxxxx, +66xxx...)
+  return /^(\+66|0)[0-9\s-]{9,14}$/.test(v);
 }
 
 // contactForm?.addEventListener("submit", ...)
-contactForm?.addEventListener("submit", (e) => {
+contactForm?.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const nameEl = contactForm.querySelector('input[type="text"]');
-  const emailEl = contactForm.querySelector('input[type="email"]');
-  const phoneEl = contactForm.querySelector('input[type="tel"]');
+  const nameEl = contactForm.querySelector('input[name="full-name"]');
+  const emailEl = contactForm.querySelector('input[name="email"]');
+  const phoneEl = contactForm.querySelector('input[name="phone"]');
+  const messageEl = contactForm.querySelector('textarea[name="message"]');
 
   // Clear previous errors
   setState(nameEl, true);
   setState(emailEl, true);
   setState(phoneEl, true);
-
+  
   let valid = true;
-
-  if (!nameEl || !nameEl.value.trim()) {
+  let firstError = null;
+  
+  if (!nameEl.value.trim()) {
     setState(nameEl, false, "กรุณากรอกชื่อ-นามสกุล");
     valid = false;
+    firstError = firstError || nameEl;
   }
 
-  if (!emailEl || !isEmail(emailEl.value.trim())) {
+  if (!isEmail(emailEl.value.trim())) {
     setState(emailEl, false, "กรุณากรอกอีเมลที่ถูกต้อง");
     valid = false;
+    firstError = firstError || emailEl;
   }
 
-  if (!phoneEl || !isPhone(phoneEl.value.trim())) {
-    setState(phoneEl, false, "กรุณากรอกเบอร์โทรศัพท์");
+  if (!isPhone(phoneEl.value.trim())) {
+    setState(phoneEl, false, "กรุณากรอกเบอร์โทรศัพท์ที่ถูกต้อง");
     valid = false;
-  } else {
-    setState(phoneEl, true);
+    firstError = firstError || phoneEl;
   }
 
   if (!valid) {
-    const firstErr = contactForm.querySelector(".is-error");
-    firstErr?.scrollIntoView({ behavior: "smooth", block: "center" });
-    firstErr?.focus();
+    firstError?.scrollIntoView({ behavior: "smooth", block: "center" });
+    firstError?.focus();
     return;
   }
 
-  // ถ้า valid แล้ว แสดง modal
-  openModal();
-  contactForm.reset();
-  [nameEl, emailEl, phoneEl].forEach((el) => el?.classList.remove("is-valid"));
-
-  // ===== Form Success Modal (GSAP motion) =====
-  function openModal() {
-    if (!modal) return;
-    modal.classList.add("is-open");
-    document.body.classList.add("modal-open");
-
-    const dialog = modal.querySelector(".form-modal__dialog");
-    gsap.fromTo(
-      dialog,
-      { y: -50, opacity: 0, scale: 0.9 },
-      { y: 0, opacity: 1, scale: 1, duration: 0.4, ease: "power3.out" }
-    );
-  }
-
-  function closeModal() {
-    if (!modal) return;
-    const dialog = modal.querySelector(".form-modal__dialog");
-    gsap.to(dialog, {
-      y: -50,
-      opacity: 0,
-      scale: 0.9,
-      duration: 0.3,
-      ease: "power3.in",
-      onComplete: () => {
-        modal.classList.remove("is-open");
-        document.body.classList.remove("modal-open");
-      },
+  const formData = new FormData(contactForm);
+  const submitBtn = contactForm.querySelector(".submit-btn");
+  submitBtn.disabled = true;
+  submitBtn.textContent = "กำลังส่ง...";
+  
+  try {
+    const response = await fetch(contactForm.action, { // โค้ดนี้จะใช้ URL จาก action ของ form
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
     });
+
+    if (response.ok) {
+      openModal();
+      contactForm.reset();
+      [nameEl, emailEl, phoneEl, messageEl].forEach((el) => {
+        if (el) el.classList.remove("is-valid", "is-error");
+      });
+    } else {
+      throw new Error('Form submission failed.');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert("เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง");
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "ส่งฟอร์ม";
   }
 
-  modalOk?.addEventListener("click", closeModal);
-  modalClose?.addEventListener("click", closeModal);
-  modal?.addEventListener("click", (e) => {
-    if (e.target === modal) closeModal();
+});
+
+// ===== Form Success Modal (GSAP motion) =====
+function openModal() {
+  if (!modal) return;
+  modal.classList.add("is-open");
+  document.body.classList.add("modal-open");
+
+  const dialog = modal.querySelector(".form-modal__dialog");
+  gsap.fromTo(
+    dialog,
+    { y: -50, opacity: 0, scale: 0.9 },
+    { y: 0, opacity: 1, scale: 1, duration: 0.4, ease: "power3.out" }
+  );
+}
+
+function closeModal() {
+  if (!modal) return;
+  const dialog = modal.querySelector(".form-modal__dialog");
+  gsap.to(dialog, {
+    y: -50,
+    opacity: 0,
+    scale: 0.9,
+    duration: 0.3,
+    ease: "power3.in",
+    onComplete: () => {
+      modal.classList.remove("is-open");
+      document.body.classList.remove("modal-open");
+    },
   });
+}
 
-  // ✅ โค้ดสำหรับส่งฟอร์ม...
-  // const formData = new FormData(contactForm);
-  // const url = "URL_FROM_GOOGLE_APPS_SCRIPT"; // 👈 อย่าลืมเปลี่ยน URL นี้
-
-  // fetch(url, {
-  //     method: 'POST',
-  //     body: formData
-  //   })
-  //   .then(response => response.text())
-  //   .then(data => {
-  //     console.log('Success:', data);
-  //     openModal();
-  //     contactForm.reset();
-  //     [nameEl, emailEl, phoneEl].forEach((el) =>
-  //       el?.classList.remove("is-valid")
-  //     );
-  //   })
-  //   .catch((error) => {
-  //     console.error('Error:', error);
-  //     alert("มีข้อผิดพลาดในการส่งข้อมูล");
-  //   });
+modalOk?.addEventListener("click", closeModal);
+modalClose?.addEventListener("click", closeModal);
+modal?.addEventListener("click", (e) => {
+  if (e.target === modal) closeModal();
 });
 
 /* ================================

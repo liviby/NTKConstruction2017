@@ -50,12 +50,12 @@
 .company-info h3 {
   font-family: "Montserrat", sans-serif;
   font-weight: 600px;
-  /* font-size: 32px; */
+  font-size: 24px;
   margin: 0;
 }
 
 .company-info p {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   margin: 0;
 }

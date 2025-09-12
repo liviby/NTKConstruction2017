@@ -10,7 +10,7 @@
     --page-max: 1200px;
   
     /* Default = mobile */
-    --pad-x: 20px;
+    --pad-x: 30px;
     --page-gap: 28px;
   }
   
@@ -41,21 +41,6 @@
   @media (min-width: 1400px) {
     :root { --pad-x: 156px }
   }
-  
-  /* ===== Base (mobile default ≤768px) ===== */
-  
-  /* Containers with central alignment */
-  /* .content-container,
-  .about-container,
-  .services-container,
-  .projects-container,
-  .contact-container,
-  .footer-container {
-    max-width: var(--page-max);
-    margin-inline: auto;
-    padding-inline: var(--pad-x);
-    box-sizing: border-box;
-  } */
   
   /* Navbar needs padding only */
   .navbar { padding-inline: var(--pad-x); }
@@ -145,13 +130,10 @@
   
 
   .footer-container {
-    /* display: flex;
-    flex-direction: column;
-    align-items: flex-start; */
     gap: 20px;
   }
 
-  .footer-heading { font-size: 18px; }
+  .footer-heading { font-size: 24px; }
   .footer-text,
   .footer-list li,
   .footer-services li { font-size: 16px; }

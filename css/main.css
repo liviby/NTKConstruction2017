@@ -74,7 +74,8 @@ a.btn:hover,
 .banner,
 .navbar,
 .projects-container,
-.contact-section {
+.contact-section,
+.footer-bottom{ 
   padding-inline: var(--pad-x);
 }
 

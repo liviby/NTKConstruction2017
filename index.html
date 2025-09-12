@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NTK Construction 2017</title>
+    <meta name="description" content="NTK Construction 2017 บริษัทรับเหมาก่อสร้างครบวงจร บ้าน โครงการ งานโครงสร้าง งานสถาปัตยกรรม งานระบบ">
+
+    <title>NTK Construction 2017 - รับเหมาก่อสร้าง กรุงเทพและปริมณฑล ในประเทศไทย</title>
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Montserrat:wght@800&display=swap"
       rel="stylesheet"
@@ -11,6 +13,7 @@
     <link
      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet"
     />
+    <link rel="icon" href="Assets/NTKLogo.svg" type="image/svg+xml">
     <link rel="stylesheet" href="css/main.css" />
   </head>
 
@@ -18,7 +21,7 @@
     <nav class="navbar">
       <img src="Assets/NTKLogo.svg" alt="NTKLogo" />
       <div class="nav-menu">
-        <a href="#">หน้าแรก</a>
+        <a href="#banner">หน้าแรก</a>
         <a href="#about">เกี่ยวกับเรา</a>
         <a href="#services">บริการ</a>
         <a href="#projects">ผลงาน</a>
@@ -31,19 +34,17 @@
       </div>
     </nav>
 
-    <!-- เมนูด้านขวา -->
     <div class="mobile-menu">
-      <a href="#">หน้าแรก</a>
+      <a href="#banner">หน้าแรก</a>
       <a href="#about">เกี่ยวกับเรา</a>
       <a href="#services">บริการ</a>
       <a href="#projects">ผลงาน</a>
       <a href="#contact">ติดต่อเรา</a>
     </div>
 
-    <!-- overlay อยู่ข้างนอกเมนู -->
     <div class="mobile-overlay"></div>
 
-    <div class="banner">
+    <div class="banner" id="banner">
       <div class="content-container">
         <div class="text-section">
           <div class="title-group">
@@ -68,7 +69,7 @@
     <section class="about-section" id="about">
       <div class="about-container">
         <div class="about-image">
-          <img src=Assets/General/BBS-BK.jpg alt="About Us"
+          <img src=Assets/AboutUs.jpg alt="งานก่อสร้าง NTK Construction 2017"
           class="construction-image" />
           <div class="image-overlay"></div>
         </div>
@@ -88,13 +89,12 @@
             </p>
 
             <p class="company-details">
-              ด้วยทีมงานมืออาชีพกว่า 75 คน และเครื่องมือเครื่องจักรที่ทันสมัย
+              ด้วยทีมงานมืออาชีพ และเครื่องมือเครื่องจักรที่ทันสมัย
               เราพร้อมรับมือกับโครงการก่อสร้างทุกประเภท ไม่ว่าจะเป็นบ้านเดี่ยว
               คอนโดมิเนียม โรงแรม หรืออาคารสำนักงาน
             </p>
           </div>
 
-          <!-- <button class="btn btn-contact">ติดต่อเรา</button> -->
           <a href="#contact" class="btn btn-contact">ติดต่อเรา</a>
         </div>
       </div>
@@ -112,7 +112,7 @@
 
       <div class="services-container">
         <div class="card">
-          <div class="card-image" style="background-image: url('Assets/construction.png')">
+          <div class="card-image" style="background-image: url('Assets/Service/Construction.jpg')">
           </div>
           <div class="card-footer">
             <div class="card-icon">
@@ -125,7 +125,7 @@
         <div class="card">
           <div
             class="card-image"
-            style="background-image: url('Assets/Service/truck.jpg')"
+            style="background-image: url('Assets/Service/Truck2.png')"
           ></div>
           <div class="card-footer">
             <div class="card-icon">
@@ -138,7 +138,7 @@
         <div class="card">
           <div
             class="card-image"
-            style="background-image: url('Assets/Service/excavation.jpg')"
+            style="background-image: url('Assets/Service/Kubota.png')"
           ></div>
           <div class="card-footer">
             <div class="card-icon">
@@ -163,13 +163,12 @@
           </button>
 
           <div class="projects-carousel" data-current="0">
-            <!-- Page 1 -->
             <ul class="project-list" aria-label="หน้า 1">
               <li class="project-card" tabindex="0">
                 <div
                   class="project-image"
                   style="
-                   background-image: url('Assets/Project/R6M26116-HDR.jpg');
+                   background-image: url('Assets/General/BBS-BK.jpg');
                   "
                 ></div>
                 <div class="project-gradient"></div>
@@ -217,116 +216,8 @@
               </li>
             </ul>
 
-            <!-- Page 2 -->
-            <!-- <ul class="project-list" aria-label="หน้า 2">
-              <li class="project-card" tabindex="0">
-                <div
-                  class="project-image"
-                  style="
-                    background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200');
-                  "
-                ></div>
-                <div class="project-gradient"></div>
-                <div class="project-overlay">
-                  <h4 class="project-title">THE OBSIDIAN พุทธมณฑล สาย 1</h4>
-                </div>
-              </li>
-              <li class="project-card" tabindex="0">
-                <div
-                  class="project-image"
-                  style="
-                    background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200');
-                  "
-                ></div>
-                <div class="project-gradient"></div>
-                <div class="project-overlay">
-                  <h4 class="project-title">เวนิว ไอดี เพชรเกษม 81</h4>
-                </div>
-              </li>
-              <li class="project-card" tabindex="0">
-                <div
-                  class="project-image"
-                  style="
-                    background-image: url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200');
-                  "
-                ></div>
-                <div class="project-gradient"></div>
-                <div class="project-overlay">
-                  <h4 class="project-title">
-                    แกรนด์บางกอก บูเลอวาร์ด ปิ่นเกล้า-บรมฯ
-                  </h4>
-                </div>
-              </li>
-              <li class="project-card" tabindex="0">
-                <div
-                  class="project-image"
-                  style="
-                    background-image: url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200');
-                  "
-                ></div>
-                <div class="project-gradient"></div>
-                <div class="project-overlay">
-                  <h4 class="project-title">โรงแรม 29 ห้อง เดอะซีซั่น ระยอง</h4>
-                </div>
-              </li>
-            </ul> -->
+            </div>
 
-            <!-- Page 3 -->
-            <!-- <ul class="project-list" aria-label="หน้า 3">
-              <li class="project-card" tabindex="0">
-                <div
-                  class="project-image"
-                  style="
-                    background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200');
-                  "
-                ></div>
-                <div class="project-gradient"></div>
-                <div class="project-overlay">
-                  <h4 class="project-title">THE OBSIDIAN พุทธมณฑล สาย 1</h4>
-                </div>
-              </li>
-              <li class="project-card" tabindex="0">
-                <div
-                  class="project-image"
-                  style="
-                    background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200');
-                  "
-                ></div>
-                <div class="project-gradient"></div>
-                <div class="project-overlay">
-                  <h4 class="project-title">เวนิว ไอดี เพชรเกษม 81</h4>
-                </div>
-              </li>
-              <li class="project-card" tabindex="0">
-                <div
-                  class="project-image"
-                  style="
-                    background-image: url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200');
-                  "
-                ></div>
-                <div class="project-gradient"></div>
-                <div class="project-overlay">
-                  <h4 class="project-title">
-                    แกรนด์บางกอก บูเลอวาร์ด ปิ่นเกล้า-บรมฯ
-                  </h4>
-                </div>
-              </li>
-              <li class="project-card" tabindex="0">
-                <div
-                  class="project-image"
-                  style="
-                    background-image: url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200');
-                  "
-                ></div>
-                <div class="project-gradient"></div>
-                <div class="project-overlay">
-                  <h4 class="project-title">โรงแรม 29 ห้อง เดอะซีซั่น ระยอง</h4>
-                </div>
-              </li>
-            </ul> -->
-          </div>
-
-          <!-- ชุดปุ่มเดียว -->
           <button class="carousel-btn next" aria-label="ถัดไป" title="ถัดไป">
             <img src="Assets/arrow-right.svg" alt="Next" class="carousel-icon">
           </button>
@@ -358,11 +249,10 @@
             <div class="contact-row">
               <img src="assets/phone.svg" alt="Phone" class="icon" />
               <p>094-249-4021</p>
-              <!-- <a href="tel:094-249-4021" class="tel-link">094-249-4021</a> -->
-            </div>
+              </div>
             <div class="contact-row">
               <img src="assets/email.svg" alt="Email" class="icon" />
-              <p>tavanart.k@gmail.com</p>
+              <p>ntk.construction2017@gmail.com</p>
             </div>
             <div class="contact-row">
               <img src="assets/facebook.svg" alt="Facebook" class="icon" />
@@ -372,9 +262,7 @@
         </div>
 
         <div class="contact-form">
-          <form name="contact" method="POST" data-netlify="true" netlify>
-            <!-- Hidden input สำหรับ Netlify -->
-            <input type="hidden" name="form-name" value="contact" />
+          <form action="https://usebasin.com/f/791c72f314b9" method="POST" id="contact-form">
         
             <div class="input-group">
               <label>ชื่อ - นามสกุล <span style="color: red">*</span></label>
@@ -404,7 +292,6 @@
 
     </section>
 
-    <!-- Success Modal -->
     <div
       id="form-modal"
       class="form-modal"
@@ -430,8 +317,7 @@
 
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <!-- Modal for enlarged image -->
-<div id="imageModal" class="modal">
+    <div id="imageModal" class="modal">
   <span class="modal-close">&times;</span>
   <img class="modal-content" id="modalImg" alt="Expanded Project Image">
 </div>
@@ -473,7 +359,7 @@
             <span class="footer-icon">
               <img src="assets/Email.svg" alt="Email Icon" />
             </span>
-            <span>tavanart.k@gmail.com</span>
+            <span>ntk.construction2017@gmail.com</span>
           </li>
           <li>
             <span class="footer-icon">
@@ -496,6 +382,12 @@
         </ul>
       </div>
     </div>
-  </footer>
+    
+    <div class="footer-bottom">
+        <span>&copy; NTK Construction 2017. All Rights Reserved.</span>
+        <!-- <span class="footer-bottom-separator">|</span> -->
+        <a>Icons by Vecteezy</a>
+    </div>
+</footer>
   
 </html>

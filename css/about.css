@@ -13,7 +13,6 @@
   overflow: hidden;
 }
 
-/* CONTAINER = กรอบเนื้อหา 1200px ไม่ต้องมี padding */
 .about-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -22,7 +21,6 @@
   width: 100%;
   max-width: var(--page-max);
   margin-inline: auto; /* center */
-  /* ไม่มี padding-inline ที่นี่ */
 }
 
 .about-image {
