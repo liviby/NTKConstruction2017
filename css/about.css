@@ -52,7 +52,7 @@
 .section-tag {
   font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
-  font-size: 14px;
+  /* font-size: 14px; */
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #000;

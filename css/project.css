@@ -54,11 +54,18 @@
 .projects-carousel {
   display: flex;
   width: 100%;
-  gap: var(--page-gap); /* คุมช่องไฟระหว่างหน้า */
-  transition: transform 0.6s ease-in-out;
+  gap: var(--page-gap);
+  transition: transform 0.6s ease-in-out; 
   will-change: transform;
+  touch-action: pan-y;
+  cursor: grab;
 }
 
+.projects-carousel.is-dragging { cursor: grabbing; }
+
+.carousel-wrapper, .projects-carousel { overscroll-behavior: contain; }
+
+.project-list.no-fade { transition: none !important; }
 
 /* 1 หน้า = 100% ของ wrapper */
 .project-list {
@@ -138,34 +145,41 @@
   transform: translateY(-50%);
   z-index: 10;
   border: none;
-  background: #fff;
-  border-radius: 50%;
+  background: #FFF7F1;
+  color: #0B3D75; /* ลูกศรสีน้ำเงินเข้ม */
+  border-radius: 16px;               /* โค้งมนแบบสี่เหลี่ยมมน */
   width: 44px;
   height: 44px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease,
-    transform 0.2s ease;
+              transform 0.2s ease;
   user-select: none;
 }
 
 .carousel-btn:hover:not([disabled]) {
-  background: rgba(0, 0, 0, 0.8);
+  background: #222;
   color: #fff;
-  transform: translateY(-50%) scale(1.03);
+  /* transform: translateY(-50%) scale(1.05); */
 }
+
 .carousel-btn[disabled] {
   opacity: 0.45;
   cursor: not-allowed;
 }
+
 .carousel-btn.prev {
   left: -60px;
 }
 .carousel-btn.next {
-  right:-60px;
+  right: -60px;
+}
+.carousel-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(11,61,117,.22);
 }
 
 /* ใช้กับเอฟเฟกต์ reveal จาก JS */
@@ -231,9 +245,9 @@
   transform: scale(1); /* ซูมขึ้นมา */
 }
 
-.carousel-btn .carousel-icon {
+/* .carousel-btn .carousel-icon {
   width: 20px;
   height: 20px;
   object-fit: contain;
-}
+} */
 

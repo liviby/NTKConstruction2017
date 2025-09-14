@@ -36,11 +36,10 @@ button,
 a.btn,
 .contact-btn,
 .btn-contact,
-.carousel-btn,
 .submit-btn,
 .form-modal__ok,
 .form-modal__close {
-  border-radius: 12px; /* ✅ same ขนาดโค้ง for all */
+  border-radius: 16px; 
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -75,7 +74,7 @@ a.btn:hover,
 .navbar,
 .projects-container,
 .contact-section,
-.footer-bottom{ 
+.footer-bottom {
   padding-inline: var(--pad-x);
 }
 
@@ -100,9 +99,9 @@ a.btn:hover,
   transition: all 0.3s ease;
   cursor: pointer;
 }
-#scroll-to-top:hover {
+/* #scroll-to-top:hover {
   background-color: #e3810a;
-}
+} */
 
 #scroll-to-top.show {
   opacity: 1;
@@ -115,9 +114,53 @@ body {
   -moz-osx-font-smoothing: grayscale; /* สำหรับเบราว์เซอร์ Firefox */
 }
 
+/* Mobile: sections มีขนาดเท่ากัน */
 
+.about-section,
+.services-section,
+.projects-section,
+.contact-section {
+  font-size: 16px;
+}
 
+/* ===== Premium (visible) scroll animations for banner ===== */
+@media (prefers-reduced-motion: no-preference) {
+  /* state เริ่ม */
+  .fade-in-up.anim-init,
+  .slide-in-left.anim-init,
+  .slide-in-right.anim-init {
+    opacity: 0;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+  }
 
+  /* เพิ่ม “ระยะ” และ “เวลา” ให้เห็นชัดขึ้น แต่ยังสุภาพ */
+  .fade-in-up.anim-init     { transform: translateY(24px); }
+  .slide-in-left.anim-init  { transform: translateX(-28px); }
+  .slide-in-right.anim-init { transform: translateX(28px); }
 
+  .fade-in-up.appear,
+  .slide-in-left.appear,
+  .slide-in-right.appear {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity .95s cubic-bezier(.22,.61,.36,1),
+      transform 1.05s cubic-bezier(.22,.61,.36,1);
+  }
 
+  /* ปุ่มในแบนเนอร์ (ถ้าห่อด้วย data-anim="fade") ให้ไหลนุ่มกว่านิด */
+  .button-container.fade-in-up.appear {
+    transition-duration: 1.1s; /* นุ่มขึ้นอีกเล็กน้อย */
+  }
+/*   
+  .appear { transition-delay: 0ms !important; } */
+}
 
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up, .slide-in-left, .slide-in-right {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

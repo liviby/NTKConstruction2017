@@ -152,7 +152,7 @@
   /* sm ≥768px */
   @media (min-width: 768px) {
     .banner {
-      background-attachment: fixed;
+      /* background-attachment: fixed; */
       height: clamp(600px, 70vh, 702px);
     }
     .content-container {
