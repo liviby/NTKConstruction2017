@@ -1,7 +1,3 @@
-/* ===========================
-   Projects Section — 2x2 until mobile, 2 per page on mobile
-   =========================== */
-
 :root {
   --proj-bg: #fff7f1;
   --proj-text: #161c2d;
@@ -65,14 +61,13 @@
 
 .carousel-wrapper, .projects-carousel { overscroll-behavior: contain; }
 
-.project-list.no-fade { transition: none !important; }
+/* .project-list.no-fade { transition: none !important; } */
 
-/* 1 หน้า = 100% ของ wrapper */
 .project-list {
   transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
   flex: 0 0 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr; /* → 2 คอลัมน์ (รวม 4 ใบ = 2x2) */
+  grid-template-columns: 1fr 1fr; 
   grid-auto-rows: 1fr;
   gap: var(--card-gap);
   list-style: none;
@@ -93,6 +88,7 @@
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   outline: none;
+  align-self: start;
 }
 .project-card:hover {
   transform: translateY(-6px);
@@ -215,7 +211,7 @@
 
 /* ===== Image Modal ===== */
 .modal {
-  display: flex; /* เปลี่ยนจาก none → flex เสมอ */
+  display: flex; 
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -242,12 +238,6 @@
 }
 
 .modal.show .modal-content {
-  transform: scale(1); /* ซูมขึ้นมา */
+  transform: scale(1);
 }
-
-/* .carousel-btn .carousel-icon {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-} */
 

@@ -90,7 +90,6 @@ function disableButtons() {
   }
 }
 
-
 // calc how far to move per page (include CSS gap)
 function getPageStep() {
   if (!track || !pages.length) return 0;
@@ -168,7 +167,6 @@ prevBtn?.addEventListener("click", () => {
   }
 });
 
-
 // Keyboard navigation
 document.addEventListener("keydown", (e) => {
   const active = document.activeElement;
@@ -182,7 +180,6 @@ document.addEventListener("keydown", (e) => {
     updateCarousel();
   }
 });
-
 
 /* =========================================
    Smooth Swipe (no vertical scroll) — v2
@@ -216,9 +213,14 @@ document.addEventListener("keydown", (e) => {
     return 0;
   }
   function setTranslateX(px, withTransition = true) {
-    track.style.transition = withTransition ? "transform 0.5s ease" : "none";
+    if (!withTransition) {
+      track.style.transition = "none";
+    } else {
+      track.style.transition = ""; // ปล่อยให้ใช้ CSS ที่เขียนไว้
+    }
     track.style.transform = `translate3d(${px}px,0,0)`;
   }
+  
   function clampIndex(idx, pgs) {
     return Math.max(0, Math.min(idx, pgs.length - 1));
   }
@@ -303,7 +305,6 @@ document.addEventListener("keydown", (e) => {
       }
     }
     updateCarousel();
-    
   }
 
   // Touch
