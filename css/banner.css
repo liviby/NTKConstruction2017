@@ -11,6 +11,7 @@
   min-height: clamp(520px, 70vh, 820px);
   height: auto;
   overflow: hidden;
+  padding-top: 80px;
 }
 
 .banner-bg {
